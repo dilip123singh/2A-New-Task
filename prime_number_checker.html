@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prime Number Checker</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 450px;
+            max-width: 100%;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        #numberInput {
+            flex: 1;
+
+            padding: 14px;
+
+            border: 2px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            outline: none;
+        }
+
+        #numberInput:focus {
+            border-color: #667eea;
+        }
+
+        #checkBtn {
+            padding: 14px 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #667eea;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        #checkBtn:hover {
+            background: #5368d5;
+
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            background: #f5f6fa;
+
+            min-height: 80px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #resultText {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        #details {
+            margin-top: 8px;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .prime {
+            color: #27ae60;
+        }
+
+        .not-prime {
+            color: #e74c3c;
+        }
+
+        .error {
+            color: #e67e22;
+        }
+
+        .examples {
+            margin-top: 22px;
+
+            padding: 15px;
+
+            background: #f8f9fc;
+
+            border-radius: 10px;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 25px 20px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            #checkBtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="icon">🔢</div>
+
+        <h1>Prime Number Checker</h1>
+
+        <p class="subtitle">
+            Check whether a number is prime or not
+        </p>
+
+
+        <div class="input-group">
+
+            <input
+                type="number"
+                id="numberInput"
+                placeholder="Enter a number"
+            >
+
+            <button id="checkBtn">
+                Check
+            </button>
+
+        </div>
+
+
+        <div id="result">
+
+            <div id="resultText">
+                Enter a number
+            </div>
+
+            <div id="details">
+                We'll check it for you.
+            </div>
+
+        </div>
+
+
+        <div class="examples">
+
+            <strong>Example:</strong>
+
+            2, 3, 5, 7, 11 are prime numbers.
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const numberInput =
+            document.getElementById("numberInput");
+
+        const checkBtn =
+            document.getElementById("checkBtn");
+
+        const resultText =
+            document.getElementById("resultText");
+
+        const details =
+            document.getElementById("details");
+
+
+        function checkPrime() {
+
+            const value = numberInput.value;
+
+
+            // Empty input
+            if (value === "") {
+
+                resultText.innerText =
+                    "⚠️ Please enter a number.";
+
+                resultText.className = "error";
+
+                details.innerText = "";
+
+                return;
+            }
+
+
+            const number = Number(value);
+
+
+            // Prime numbers must be greater than 1
+            if (number <= 1) {
+
+                resultText.innerText =
+                    "❌ " + number + " is NOT a Prime Number";
+
+                resultText.className = "not-prime";
+
+                details.innerText =
+                    "Prime numbers are greater than 1.";
+
+                return;
+            }
+
+
+            let isPrime = true;
+
+            let divisor = 0;
+
+
+            /*
+                Check divisibility from 2
+                up to square root of number.
+            */
+
+            for (
+                let i = 2;
+                i <= Math.sqrt(number);
+                i++
+            ) {
+
+                if (number % i === 0) {
+
+                    isPrime = false;
+
+                    divisor = i;
+
+                    break;
+
+                }
+
+            }
+
+
+            // Display result
+            if (isPrime) {
+
+                resultText.innerText =
+                    "✅ " + number +
+                    " is a Prime Number";
+
+                resultText.className = "prime";
+
+                details.innerText =
+                    "It is divisible only by 1 and itself.";
+
+            } else {
+
+                resultText.innerText =
+                    "❌ " + number +
+                    " is NOT a Prime Number";
+
+                resultText.className = "not-prime";
+
+                details.innerText =
+                    number +
+                    " is divisible by " +
+                    divisor +
+                    ".";
+
+            }
+
+        }
+
+
+        // Check button
+        checkBtn.addEventListener(
+            "click",
+            checkPrime
+        );
+
+
+        // Press Enter to check
+        numberInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkPrime();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

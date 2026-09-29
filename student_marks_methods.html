@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Map Filter Reduce - Student Marks</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f3f5;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #212529;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .student {
+            padding: 12px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            border-radius: 5px;
+        }
+
+        .result {
+            padding: 15px;
+            background: #e9f7ef;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Marks Analysis</h1>
+
+        <!-- MAP -->
+        <div class="section">
+            <h2>1. map() - Add 5 Bonus Marks</h2>
+
+            <p class="description">
+                map() creates a new array by transforming every student.
+            </p>
+
+            <div id="mapResult"></div>
+        </div>
+
+
+        <!-- FILTER -->
+        <div class="section">
+            <h2>2. filter() - Students Scoring 60 or More</h2>
+
+            <p class="description">
+                filter() returns only the elements that satisfy a condition.
+            </p>
+
+            <div id="filterResult"></div>
+        </div>
+
+
+        <!-- REDUCE -->
+        <div class="section">
+            <h2>3. reduce() - Calculate Total Marks</h2>
+
+            <p class="description">
+                reduce() combines all values into a single result.
+            </p>
+
+            <div id="reduceResult"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Student marks data
+        const students = [
+            {
+                name: "Rahul",
+                marks: 85
+            },
+            {
+                name: "Amit",
+                marks: 72
+            },
+            {
+                name: "Priya",
+                marks: 58
+            },
+            {
+                name: "Neha",
+                marks: 91
+            },
+            {
+                name: "Ravi",
+                marks: 45
+            }
+        ];
+
+
+        // ==========================================
+        // 1. MAP()
+        // ==========================================
+
+        const bonusMarks = students.map(function(student) {
+
+            return {
+                name: student.name,
+                marks: student.marks + 5
+            };
+
+        });
+
+
+        const mapResult = document.getElementById("mapResult");
+
+        bonusMarks.forEach(function(student) {
+
+            mapResult.innerHTML += `
+                <div class="student">
+                    ${student.name} → ${student.marks} marks
+                </div>
+            `;
+
+        });
+
+
+        // ==========================================
+        // 2. FILTER()
+        // ==========================================
+
+        const passedStudents = students.filter(function(student) {
+
+            return student.marks >= 60;
+
+        });
+
+
+        const filterResult = document.getElementById("filterResult");
+
+        passedStudents.forEach(function(student) {
+
+            filterResult.innerHTML += `
+                <div class="student">
+                    ${student.name} → ${student.marks} marks
+                </div>
+            `;
+
+        });
+
+
+        // ==========================================
+        // 3. REDUCE()
+        // ==========================================
+
+        const totalMarks = students.reduce(function(total, student) {
+
+            return total + student.marks;
+
+        }, 0);
+
+
+        const reduceResult = document.getElementById("reduceResult");
+
+        reduceResult.innerHTML = `
+            <div class="result">
+                Total Marks = ${totalMarks}
+            </div>
+        `;
+
+    </script>
+
+</body>
+</html>

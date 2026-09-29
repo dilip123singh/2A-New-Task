@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile-First Responsive Testing</title>
+
+    <style>
+        /* =========================
+           MOBILE FIRST - DEFAULT
+           ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            width: 100%;
+            padding: 15px;
+            margin: auto;
+        }
+
+        /* Header */
+        header {
+            background: #0d6efd;
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 14px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #212529;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+
+        nav a:hover {
+            background: #343a40;
+        }
+
+        /* Hero */
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 35px 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Responsive Image */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #212529;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TABLET - 768px AND ABOVE
+           ========================= */
+
+        @media (min-width: 768px) {
+
+            .container {
+                max-width: 720px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            nav ul {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            nav a {
+                border-bottom: none;
+                padding: 15px 20px;
+            }
+
+            .hero {
+                padding: 50px 30px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+
+        /* =========================
+           DESKTOP - 992px AND ABOVE
+           ========================= */
+
+        @media (min-width: 992px) {
+
+            .container {
+                max-width: 960px;
+            }
+
+            .hero {
+                padding: 70px 50px;
+            }
+
+            .hero h2 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 25px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+
+
+        /* =========================
+           LARGE DESKTOP
+           ========================= */
+
+        @media (min-width: 1200px) {
+
+            .container {
+                max-width: 1140px;
+            }
+
+            header h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Responsive Web Design</h1>
+            <p>Mobile-first responsiveness testing page</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Test Your Website on Every Screen</h2>
+
+            <p>
+                This page follows a mobile-first approach.
+                The layout starts with mobile styles and
+                progressively adapts for tablets and desktops.
+            </p>
+
+            <a href="#" class="btn">Get Started</a>
+        </section>
+
+        <!-- Cards -->
+        <section class="cards">
+
+            <article class="card">
+                <h3>📱 Mobile</h3>
+                <p>
+                    The default design is optimized for small
+                    mobile screens and touch-friendly interaction.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>💻 Tablet</h3>
+                <p>
+                    At 768px and above, the layout changes to
+                    two columns for better use of screen space.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>🖥️ Desktop</h3>
+                <p>
+                    At 992px and above, the cards display in
+                    three columns with larger spacing.
+                </p>
+            </article>
+
+        </section>
+
+        <!-- Responsive Image -->
+        <img
+            src="https://via.placeholder.com/1200x400"
+            alt="Responsive website example"
+            class="responsive-image"
+        >
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Responsive Design Test</p>
+    </footer>
+
+</body>
+</html>

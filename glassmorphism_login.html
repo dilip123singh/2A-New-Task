@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glassmorphism Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea,
+                    #764ba2
+                );
+
+            position: relative;
+        }
+
+        /* Background Decorative Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .circle-one {
+            width: 250px;
+            height: 250px;
+            background: #ff6b6b;
+
+            top: -70px;
+            left: -60px;
+        }
+
+        .circle-two {
+            width: 300px;
+            height: 300px;
+            background: #00d4ff;
+
+            bottom: -100px;
+            right: -80px;
+        }
+
+        .circle-three {
+            width: 150px;
+            height: 150px;
+            background: #ffd93d;
+
+            top: 30%;
+            right: 15%;
+        }
+
+        /* Login Card */
+        .login-card {
+            width: 380px;
+            padding: 40px 35px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.25);
+
+            color: white;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Heading */
+        .login-card h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Remember / Forgot */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+
+            font-size: 14px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .options a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: white;
+            color: #5b4bb7;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Register */
+        .register {
+            text-align: center;
+            margin-top: 25px;
+
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .register a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .login-card {
+                width: 100%;
+                padding: 35px 25px;
+            }
+
+            .login-card h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Shapes -->
+    <div class="circle circle-one"></div>
+    <div class="circle circle-two"></div>
+    <div class="circle circle-three"></div>
+
+
+    <!-- Login Card -->
+    <div class="login-card">
+
+        <h1>Welcome Back</h1>
+
+        <p class="subtitle">
+            Login to your account
+        </p>
+
+
+        <form>
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Options -->
+            <div class="options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- Button -->
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+
+        <!-- Register -->
+        <p class="register">
+
+            Don't have an account?
+
+            <a href="#">
+                Create Account
+            </a>
+
+        </p>
+
+    </div>
+
+</body>
+</html>

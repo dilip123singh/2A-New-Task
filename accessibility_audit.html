@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accessibility Audit</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #172033;
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Header */
+
+        header {
+            background-color: #12355b;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Keyboard Accessibility */
+
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 3px solid #ffbf47;
+            outline-offset: 3px;
+        }
+
+        /* Hero */
+
+        .hero {
+            background-color: #eaf3ff;
+            padding: 70px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            color: #12355b;
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #12355b;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #0b2744;
+        }
+
+        /* Courses */
+
+        .courses {
+            padding: 70px 0;
+        }
+
+        h2 {
+            color: #12355b;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            border: 1px solid #c5ced8;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .course-card h3 {
+            color: #12355b;
+            margin: 10px 0;
+        }
+
+        .course-card p {
+            margin-bottom: 15px;
+        }
+
+        .course-link {
+            color: #0645ad;
+            font-weight: bold;
+        }
+
+        /* About */
+
+        .about {
+            background-color: #f1f5f9;
+            padding: 70px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        .about-box {
+            background-color: white;
+            padding: 25px;
+            border-left: 5px solid #12355b;
+        }
+
+        .about-box h3 {
+            color: #12355b;
+            margin-bottom: 15px;
+        }
+
+        .about-box ul {
+            padding-left: 20px;
+        }
+
+        /* Contact */
+
+        .contact {
+            padding: 70px 0;
+        }
+
+        .contact-form {
+            max-width: 650px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #7a8796;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #12355b;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0b2744;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #12355b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-text h1 {
+                font-size: 35px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="container header-content">
+
+            <a href="#home" class="logo">
+                Accessibility Audit
+            </a>
+
+            <nav aria-label="Main Navigation">
+
+                <ul>
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#courses">Courses</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <main>
+
+        <!-- Home Section -->
+
+        <section id="home" class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <h1>
+                        Accessible Web Page
+                    </h1>
+
+                    <p>
+                        This webpage is designed to demonstrate
+                        accessibility features that can be tested
+                        using Google Lighthouse.
+                    </p>
+
+                    <a href="#courses" class="btn">
+                        Explore Courses
+                    </a>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <img
+                        src="https://via.placeholder.com/500x300"
+                        alt="Students learning in a classroom"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Courses Section -->
+
+        <section id="courses" class="courses">
+
+            <div class="container">
+
+                <h2>
+                    Popular Courses
+                </h2>
+
+                <p>
+                    Explore courses designed for students.
+                </p>
+
+
+                <div class="course-grid">
+
+                    <article class="course-card">
+
+                        <div aria-hidden="true">
+                            💻
+                        </div>
+
+                        <h3>
+                            Java Programming
+                        </h3>
+
+                        <p>
+                            Learn Java programming and
+                            object-oriented programming concepts.
+                        </p>
+
+                        <a href="#" class="course-link">
+                            Learn Java
+                        </a>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div aria-hidden="true">
+                            🌐
+                        </div>
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <p>
+                            Learn HTML and CSS to create
+                            accessible websites.
+                        </p>
+
+                        <a href="#" class="course-link">
+                            Learn Web Development
+                        </a>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div aria-hidden="true">
+                            📊
+                        </div>
+
+                        <h3>
+                            Data Analysis
+                        </h3>
+
+                        <p>
+                            Learn basic data analysis and
+                            problem-solving techniques.
+                        </p>
+
+                        <a href="#" class="course-link">
+                            Learn Data Analysis
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Section -->
+
+        <section id="about" class="about">
+
+            <div class="container about-content">
+
+                <div>
+
+                    <h2>
+                        About This Page
+                    </h2>
+
+                    <p>
+                        This webpage follows accessibility
+                        best practices such as semantic HTML,
+                        proper labels, alternative text and
+                        keyboard focus indicators.
+                    </p>
+
+                    <p>
+                        The page can be tested using Google
+                        Chrome Lighthouse accessibility audit.
+                    </p>
+
+                </div>
+
+
+                <div class="about-box">
+
+                    <h3>
+                        Accessibility Features
+                    </h3>
+
+                    <ul>
+                        <li>Semantic HTML</li>
+                        <li>Image alternative text</li>
+                        <li>Form labels</li>
+                        <li>Keyboard focus</li>
+                        <li>Good color contrast</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact Section -->
+
+        <section id="contact" class="contact">
+
+            <div class="container">
+
+                <h2>
+                    Contact Us
+                </h2>
+
+                <p>
+                    Please fill out the form below.
+                </p>
+
+
+                <form class="contact-form">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="course">
+                            Select Course
+                        </label>
+
+                        <select
+                            id="course"
+                            name="course"
+                            required
+                        >
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            <option value="java">
+                                Java Programming
+                            </option>
+
+                            <option value="web">
+                                Web Development
+                            </option>
+
+                            <option value="data">
+                                Data Analysis
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Write your message"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Accessibility Audit Project.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

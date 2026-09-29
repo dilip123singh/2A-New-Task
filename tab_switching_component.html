@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tab Switching Component</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        .container {
+            width: 700px;
+            max-width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #777;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h2 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .tab-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .card {
+            background: #f5f6fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 20px;
+            }
+
+            .tab-btn {
+                font-size: 14px;
+                padding: 12px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Profile</h1>
+
+        <!-- Tab Buttons -->
+        <div class="tabs">
+
+            <button class="tab-btn active" data-tab="about">
+                About
+            </button>
+
+            <button class="tab-btn" data-tab="skills">
+                Skills
+            </button>
+
+            <button class="tab-btn" data-tab="projects">
+                Projects
+            </button>
+
+        </div>
+
+
+        <!-- About Tab -->
+        <div class="tab-content active" id="about">
+
+            <h2>About Me</h2>
+
+            <p>
+                I am a B.Com with IT student interested in
+                Java development, web development and software
+                development.
+            </p>
+
+            <div class="card">
+                <strong>Education:</strong>
+                B.Com with IT
+            </div>
+
+        </div>
+
+
+        <!-- Skills Tab -->
+        <div class="tab-content" id="skills">
+
+            <h2>My Skills</h2>
+
+            <p>
+                My technical skills include Java, HTML, CSS,
+                JavaScript, Bootstrap, JDBC and Git/GitHub.
+            </p>
+
+            <div class="card">
+                <strong>Primary Skill:</strong>
+                Java Development
+            </div>
+
+        </div>
+
+
+        <!-- Projects Tab -->
+        <div class="tab-content" id="projects">
+
+            <h2>My Projects</h2>
+
+            <p>
+                I have worked on projects such as Complaint
+                Tracking System, Ticket Booking System and
+                ATM Machine Simulation.
+            </p>
+
+            <div class="card">
+                <strong>Project:</strong>
+                Complaint Tracking System
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Get all tab buttons
+        const tabButtons = document.querySelectorAll(".tab-btn");
+
+        // Get all tab contents
+        const tabContents = document.querySelectorAll(".tab-content");
+
+
+        tabButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                // Remove active class from all buttons
+                tabButtons.forEach(function(btn) {
+                    btn.classList.remove("active");
+                });
+
+
+                // Remove active class from all contents
+                tabContents.forEach(function(content) {
+                    content.classList.remove("active");
+                });
+
+
+                // Add active class to clicked button
+                button.classList.add("active");
+
+
+                // Get target tab
+                const targetTab = button.getAttribute("data-tab");
+
+
+                // Show matching content
+                document
+                    .getElementById(targetTab)
+                    .classList.add("active");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

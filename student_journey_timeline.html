@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Journey Timeline</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            padding: 50px 20px;
+        }
+
+        /* Main Container */
+        .timeline-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .timeline-container h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-container > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        /* Vertical Line using ::before */
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 0;
+            bottom: 0;
+
+            width: 4px;
+
+            background: #0d6efd;
+
+            transform: translateX(-50%);
+        }
+
+        /* Timeline Item */
+        .timeline-item {
+            position: relative;
+
+            width: 50%;
+
+            padding: 10px 40px 40px;
+        }
+
+        /* Left Items */
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        /* Right Items */
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        /* Timeline Dot using ::after */
+        .timeline-item::after {
+            content: "";
+
+            position: absolute;
+
+            top: 15px;
+
+            width: 18px;
+            height: 18px;
+
+            background: white;
+
+            border: 5px solid #0d6efd;
+
+            border-radius: 50%;
+
+            z-index: 2;
+        }
+
+        /* Dot for Left Side */
+        .timeline-item:nth-child(odd)::after {
+            right: -9px;
+        }
+
+        /* Dot for Right Side */
+        .timeline-item:nth-child(even)::after {
+            left: -9px;
+        }
+
+        /* Content Card */
+        .timeline-content {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.14);
+        }
+
+        .timeline-content .year {
+            display: inline-block;
+
+            background: #0d6efd;
+            color: white;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .timeline-content h2 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Skills */
+        .skills {
+            margin-top: 15px;
+
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .skill {
+            background: #e7f1ff;
+            color: #0d6efd;
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 700px) {
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+
+                text-align: left !important;
+
+                padding-left: 55px;
+                padding-right: 10px;
+            }
+
+            .timeline-item::after {
+                left: 6px !important;
+                right: auto !important;
+            }
+
+            .timeline-container h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="timeline-container">
+
+        <h1>My Student Journey</h1>
+
+        <p>
+            A journey from school to becoming a software developer.
+        </p>
+
+
+        <div class="timeline">
+
+            <!-- 2019 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2019
+                    </span>
+
+                    <h2>Secondary School</h2>
+
+                    <p>
+                        Completed my secondary education and
+                        developed an interest in computers and
+                        technology.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">Computer Basics</span>
+                        <span class="skill">MS Office</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2021 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2021
+                    </span>
+
+                    <h2>Higher Secondary</h2>
+
+                    <p>
+                        Completed higher secondary education and
+                        started exploring programming and
+                        information technology.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">Communication</span>
+                        <span class="skill">Computer</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2023 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2023
+                    </span>
+
+                    <h2>Started B.Com + IT</h2>
+
+                    <p>
+                        Started my graduation in B.Com with IT
+                        and began learning programming concepts.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">Java</span>
+                        <span class="skill">DBMS</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2024 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2024
+                    </span>
+
+                    <h2>Web Development</h2>
+
+                    <p>
+                        Started learning frontend technologies
+                        and created small web development projects.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">HTML</span>
+                        <span class="skill">CSS</span>
+                        <span class="skill">Bootstrap</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2025 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2025
+                    </span>
+
+                    <h2>Project Development</h2>
+
+                    <p>
+                        Worked on practical projects and improved
+                        programming, database and problem-solving
+                        skills.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">JSP</span>
+                        <span class="skill">MySQL</span>
+                        <span class="skill">Git</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2026 -->
+            <div class="timeline-item">
+
+                <div class="timeline-content">
+
+                    <span class="year">
+                        2026
+                    </span>
+
+                    <h2>Software Developer Goal</h2>
+
+                    <p>
+                        Currently preparing for software developer
+                        interviews and strengthening Java, DSA,
+                        JavaScript and communication skills.
+                    </p>
+
+                    <div class="skills">
+                        <span class="skill">Java</span>
+                        <span class="skill">DSA</span>
+                        <span class="skill">JavaScript</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dynamic Form Validation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input.valid {
+            border-color: #198754;
+        }
+
+        input.invalid {
+            border-color: #dc3545;
+        }
+
+        .message {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .success {
+            color: #198754;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5568d9;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h1>Registration Form</h1>
+
+        <form id="myForm">
+
+            <div class="field">
+                <label>Name</label>
+
+                <input type="text" id="name"
+                       placeholder="Enter your name">
+
+                <span id="nameMsg" class="message"></span>
+            </div>
+
+
+            <div class="field">
+                <label>Email</label>
+
+                <input type="text" id="email"
+                       placeholder="Enter your email">
+
+                <span id="emailMsg" class="message"></span>
+            </div>
+
+
+            <div class="field">
+                <label>Password</label>
+
+                <input type="password" id="password"
+                       placeholder="Enter password">
+
+                <span id="passwordMsg" class="message"></span>
+            </div>
+
+
+            <div class="field">
+                <label>Confirm Password</label>
+
+                <input type="password" id="confirmPassword"
+                       placeholder="Confirm password">
+
+                <span id="confirmMsg" class="message"></span>
+            </div>
+
+
+            <button type="submit">
+                Register
+            </button>
+
+            <div id="result"></div>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword =
+            document.getElementById("confirmPassword");
+
+
+        // Name validation
+        name.addEventListener("input", function () {
+
+            if (name.value.trim() === "") {
+
+                showError(
+                    name,
+                    "nameMsg",
+                    "Name is required"
+                );
+
+            } else if (name.value.trim().length < 3) {
+
+                showError(
+                    name,
+                    "nameMsg",
+                    "Minimum 3 characters required"
+                );
+
+            } else {
+
+                showSuccess(
+                    name,
+                    "nameMsg",
+                    "✓ Valid name"
+                );
+            }
+        });
+
+
+        // Email validation
+        email.addEventListener("input", function () {
+
+            let pattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email.value.trim() === "") {
+
+                showError(
+                    email,
+                    "emailMsg",
+                    "Email is required"
+                );
+
+            } else if (!pattern.test(email.value)) {
+
+                showError(
+                    email,
+                    "emailMsg",
+                    "Enter a valid email"
+                );
+
+            } else {
+
+                showSuccess(
+                    email,
+                    "emailMsg",
+                    "✓ Valid email"
+                );
+            }
+        });
+
+
+        // Password validation
+        password.addEventListener("input", function () {
+
+            if (password.value === "") {
+
+                showError(
+                    password,
+                    "passwordMsg",
+                    "Password is required"
+                );
+
+            } else if (password.value.length < 8) {
+
+                showError(
+                    password,
+                    "passwordMsg",
+                    "Minimum 8 characters required"
+                );
+
+            } else {
+
+                showSuccess(
+                    password,
+                    "passwordMsg",
+                    "✓ Strong password"
+                );
+            }
+
+            checkConfirmPassword();
+        });
+
+
+        // Confirm password validation
+        confirmPassword.addEventListener(
+            "input",
+            checkConfirmPassword
+        );
+
+
+        function checkConfirmPassword() {
+
+            if (confirmPassword.value === "") {
+
+                showError(
+                    confirmPassword,
+                    "confirmMsg",
+                    "Please confirm password"
+                );
+
+            } else if (
+                password.value !== confirmPassword.value
+            ) {
+
+                showError(
+                    confirmPassword,
+                    "confirmMsg",
+                    "Passwords do not match"
+                );
+
+            } else {
+
+                showSuccess(
+                    confirmPassword,
+                    "confirmMsg",
+                    "✓ Password matched"
+                );
+            }
+        }
+
+
+        // Error function
+        function showError(input, messageId, message) {
+
+            input.classList.remove("valid");
+            input.classList.add("invalid");
+
+            const msg = document.getElementById(messageId);
+
+            msg.innerText = "✗ " + message;
+            msg.className = "message error";
+        }
+
+
+        // Success function
+        function showSuccess(input, messageId, message) {
+
+            input.classList.remove("invalid");
+            input.classList.add("valid");
+
+            const msg = document.getElementById(messageId);
+
+            msg.innerText = message;
+            msg.className = "message success";
+        }
+
+
+        // Form submit
+        document.getElementById("myForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const result =
+                    document.getElementById("result");
+
+                if (
+                    name.classList.contains("valid") &&
+                    email.classList.contains("valid") &&
+                    password.classList.contains("valid") &&
+                    confirmPassword.classList.contains("valid")
+                ) {
+
+                    result.innerText =
+                        "🎉 Registration Successful!";
+                    result.style.color = "#198754";
+
+                } else {
+
+                    result.innerText =
+                        "❌ Please fix the errors.";
+                    result.style.color = "#dc3545";
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>

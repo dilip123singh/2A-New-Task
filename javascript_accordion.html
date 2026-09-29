@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Accordion</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 18px 20px;
+            border: none;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+        }
+
+        .accordion-header:hover {
+            background: #eef0ff;
+        }
+
+        .icon {
+            font-size: 22px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+
+        .accordion-content p {
+            padding: 18px 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Frequently Asked Questions</h1>
+
+        <!-- Item 1 -->
+        <div class="accordion-item">
+
+            <button class="accordion-header">
+                What is Java?
+                <span class="icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <p>
+                    Java is a high-level, object-oriented and
+                    platform-independent programming language.
+                    It is widely used for web, desktop and
+                    enterprise applications.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Item 2 -->
+        <div class="accordion-item">
+
+            <button class="accordion-header">
+                What is JavaScript?
+                <span class="icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <p>
+                    JavaScript is a programming language mainly
+                    used to make web pages interactive and
+                    dynamic.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Item 3 -->
+        <div class="accordion-item">
+
+            <button class="accordion-header">
+                What is HTML?
+                <span class="icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <p>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure and
+                    content of web pages.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Item 4 -->
+        <div class="accordion-item">
+
+            <button class="accordion-header">
+                What is CSS?
+                <span class="icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <p>
+                    CSS stands for Cascading Style Sheets.
+                    It is used to style and design HTML
+                    elements on a webpage.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const accordionHeaders =
+            document.querySelectorAll(".accordion-header");
+
+
+        accordionHeaders.forEach(function(header) {
+
+            header.addEventListener("click", function() {
+
+                const content =
+                    header.nextElementSibling;
+
+
+                // Toggle active class
+                header.classList.toggle("active");
+
+
+                // Open or close content
+                if (content.style.maxHeight) {
+
+                    content.style.maxHeight = null;
+
+                } else {
+
+                    content.style.maxHeight =
+                        content.scrollHeight + "px";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

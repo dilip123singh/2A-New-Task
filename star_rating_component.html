@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Star Rating Component</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        .rating-box {
+            width: 420px;
+            max-width: 100%;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 45px;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .star:hover {
+            transform: scale(1.15);
+        }
+
+        .star.active {
+            color: #ffc107;
+        }
+
+        #ratingText {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            min-height: 25px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #5568d8;
+        }
+
+        #result {
+            margin-top: 15px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        @media (max-width: 450px) {
+            .rating-box {
+                padding: 25px 15px;
+            }
+
+            .star {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rating-box">
+
+        <h1>Rate Our Service</h1>
+
+        <p class="description">
+            How was your experience?
+        </p>
+
+        <div class="stars" id="stars">
+
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+
+        </div>
+
+        <div id="ratingText">
+            Select a rating
+        </div>
+
+        <button class="submit-btn" id="submitBtn">
+            Submit Rating
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        const stars = document.querySelectorAll(".star");
+
+        const ratingText =
+            document.getElementById("ratingText");
+
+        const submitBtn =
+            document.getElementById("submitBtn");
+
+        const result =
+            document.getElementById("result");
+
+        let selectedRating = 0;
+
+
+        // Rating text
+        const ratingMessages = [
+            "",
+            "Very Poor",
+            "Poor",
+            "Average",
+            "Good",
+            "Excellent"
+        ];
+
+
+        // Add click event to every star
+        stars.forEach(function(star) {
+
+            star.addEventListener("click", function() {
+
+                selectedRating =
+                    Number(star.getAttribute("data-rating"));
+
+
+                // Remove active class from all stars
+                stars.forEach(function(item) {
+                    item.classList.remove("active");
+                });
+
+
+                // Add active class up to selected star
+                stars.forEach(function(item) {
+
+                    const rating =
+                        Number(item.getAttribute("data-rating"));
+
+                    if (rating <= selectedRating) {
+                        item.classList.add("active");
+                    }
+
+                });
+
+
+                // Show rating message
+                ratingText.textContent =
+                    selectedRating +
+                    " Star - " +
+                    ratingMessages[selectedRating];
+
+            });
+
+        });
+
+
+        // Submit rating
+        submitBtn.addEventListener("click", function() {
+
+            if (selectedRating === 0) {
+
+                result.style.color = "#e74c3c";
+
+                result.textContent =
+                    "Please select a rating first.";
+
+                return;
+            }
+
+
+            result.style.color = "#28a745";
+
+            result.textContent =
+                "Thank you! You rated us " +
+                selectedRating +
+                " out of 5 stars.";
+
+        });
+
+    </script>
+
+</body>
+</html>

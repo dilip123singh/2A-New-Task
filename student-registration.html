@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Form</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            line-height: 1.6;
+            padding: 30px 15px;
+        }
+
+
+        /* =========================
+           FORM CONTAINER
+        ========================= */
+
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+
+        /* =========================
+           FORM GROUP
+        ========================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           LABEL
+        ========================= */
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .required {
+            color: #d00000;
+        }
+
+
+        /* =========================
+           INPUTS
+        ========================= */
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #777;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           FOCUS ACCESSIBILITY
+        ========================= */
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 3px solid #99c2ff;
+            border-color: #005fcc;
+        }
+
+
+        /* =========================
+           FIELDSET
+        ========================= */
+
+        fieldset {
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 8px;
+        }
+
+
+        /* =========================
+           RADIO / CHECKBOX
+        ========================= */
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .radio-option input,
+        .checkbox-option input {
+            width: auto;
+        }
+
+        .radio-option label,
+        .checkbox-option label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           HELP TEXT
+        ========================= */
+
+        .help-text {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #555;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        button:focus {
+            outline: 3px solid #99c2ff;
+            outline-offset: 2px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .form-container {
+                padding: 25px 18px;
+            }
+
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <main class="form-container">
+
+        <h1>Student Registration</h1>
+
+        <p class="description" id="form-description">
+            Please fill in the form to register as a student.
+            Fields marked with * are required.
+        </p>
+
+
+        <form
+            action="#"
+            method="post"
+            aria-describedby="form-description">
+
+
+            <!-- =========================
+                 PERSONAL INFORMATION
+            ========================= -->
+
+            <fieldset>
+
+                <legend>Personal Information</legend>
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        aria-label="Student full name"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        aria-label="Student email address"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        aria-label="Student phone number"
+                        autocomplete="tel"
+                        required>
+
+                </div>
+
+
+                <!-- DATE OF BIRTH -->
+
+                <div class="form-group">
+
+                    <label for="dob">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dob"
+                        name="dob"
+                        aria-label="Student date of birth">
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <fieldset>
+
+                    <legend>
+                        Gender
+                    </legend>
+
+                    <div class="radio-group">
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="male"
+                                name="gender"
+                                value="male"
+                                aria-label="Male">
+
+                            <label for="male">
+                                Male
+                            </label>
+
+                        </div>
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="female"
+                                name="gender"
+                                value="female"
+                                aria-label="Female">
+
+                            <label for="female">
+                                Female
+                            </label>
+
+                        </div>
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="other"
+                                name="gender"
+                                value="other"
+                                aria-label="Other">
+
+                            <label for="other">
+                                Other
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+            </fieldset>
+
+
+            <!-- =========================
+                 ACADEMIC INFORMATION
+            ========================= -->
+
+            <fieldset>
+
+                <legend>Academic Information</legend>
+
+
+                <!-- COURSE -->
+
+                <div class="form-group">
+
+                    <label for="course">
+                        Select Course
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <select
+                        id="course"
+                        name="course"
+                        aria-label="Select student course"
+                        required>
+
+                        <option value="">
+                            -- Select Course --
+                        </option>
+
+                        <option value="bcom-it">
+                            B.Com + IT
+                        </option>
+
+                        <option value="bca">
+                            BCA
+                        </option>
+
+                        <option value="btech">
+                            B.Tech
+                        </option>
+
+                        <option value="bba">
+                            BBA
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ROLL NUMBER -->
+
+                <div class="form-group">
+
+                    <label for="rollNumber">
+                        Roll Number
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        name="rollNumber"
+                        placeholder="Enter roll number"
+                        aria-label="Student roll number"
+                        required>
+
+                </div>
+
+
+                <!-- COLLEGE -->
+
+                <div class="form-group">
+
+                    <label for="college">
+                        College Name
+                        <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="college"
+                        name="college"
+                        placeholder="Enter college name"
+                        aria-label="Student college name"
+                        required>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        name="address"
+                        rows="4"
+                        placeholder="Enter your address"
+                        aria-label="Student address"></textarea>
+
+                    <span class="help-text"
+                          id="address-help">
+                        Enter your complete residential address.
+                    </span>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- =========================
+                 INTERESTS
+            ========================= -->
+
+            <fieldset>
+
+                <legend>
+                    Areas of Interest
+                </legend>
+
+                <div class="checkbox-group">
+
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            id="web"
+                            name="interest"
+                            value="web"
+                            aria-label="Web Development">
+
+                        <label for="web">
+                            Web Development
+                        </label>
+
+                    </div>
+
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            id="java"
+                            name="interest"
+                            value="java"
+                            aria-label="Java Programming">
+
+                        <label for="java">
+                            Java Programming
+                        </label>
+
+                    </div>
+
+
+                    <div class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            id="database"
+                            name="interest"
+                            value="database"
+                            aria-label="Database">
+
+                        <label for="database">
+                            Database
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- =========================
+                 TERMS
+            ========================= -->
+
+            <div class="form-group">
+
+                <div class="checkbox-option">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        aria-label="Accept terms and conditions"
+                        required>
+
+                    <label for="terms">
+                        I agree to the terms and conditions.
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SUBMIT
+            ========================= -->
+
+            <button
+                type="submit"
+                aria-label="Submit student registration form">
+
+                Register Student
+
+            </button>
+
+
+        </form>
+
+    </main>
+
+
+</body>
+
+</html>
+

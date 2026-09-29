@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Resend Timer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .otp-box {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        #timer {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="otp-box">
+        <h2>OTP Verification</h2>
+
+        <p>OTP has been sent to your mobile number.</p>
+
+        <div id="timer">Resend OTP in 10 seconds</div>
+
+        <button id="resendBtn" disabled onclick="resendOTP()">
+            Resend OTP
+        </button>
+    </div>
+
+    <script>
+
+        let seconds = 10;
+
+        const timer = document.getElementById("timer");
+        const resendBtn = document.getElementById("resendBtn");
+
+        function startTimer() {
+
+            timer.innerText = "Resend OTP in " + seconds + " seconds";
+
+            if (seconds > 0) {
+
+                setTimeout(function () {
+
+                    seconds--;
+
+                    startTimer();
+
+                }, 1000);
+
+            } else {
+
+                timer.innerText = "You can resend OTP now";
+
+                resendBtn.disabled = false;
+            }
+        }
+
+
+        function resendOTP() {
+
+            alert("New OTP has been sent!");
+
+            resendBtn.disabled = true;
+
+            seconds = 10;
+
+            startTimer();
+        }
+
+
+        startTimer();
+
+    </script>
+
+</body>
+</html>

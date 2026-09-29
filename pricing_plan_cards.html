@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pricing Plan Cards</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        /* Main Container */
+        .pricing-section {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .pricing-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .pricing-section > p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Flexbox Container */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: white;
+            width: 300px;
+            padding: 30px 25px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+            display: flex;
+            flex-direction: column;
+
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Plan Name */
+        .pricing-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* Price */
+        .price {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price span {
+            font-size: 16px;
+            color: #777;
+            font-weight: normal;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Features */
+        .features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+
+            flex-grow: 1;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features li::before {
+            content: "✓";
+            margin-right: 10px;
+            font-weight: bold;
+            color: #198754;
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .basic .btn {
+            background: #e9ecef;
+            color: #222;
+        }
+
+        .pro {
+            border: 2px solid #0d6efd;
+            transform: scale(1.04);
+        }
+
+        .pro:hover {
+            transform: scale(1.04) translateY(-8px);
+        }
+
+        .pro .btn {
+            background: #0d6efd;
+            color: white;
+        }
+
+        .premium .btn {
+            background: #212529;
+            color: white;
+        }
+
+        /* Popular Badge */
+        .popular {
+            background: #0d6efd;
+            color: white;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .pro {
+                transform: none;
+            }
+
+            .pro:hover {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="pricing-section">
+
+        <h1>Choose Your Plan</h1>
+        <p>Select a plan that fits your needs.</p>
+
+        <!-- Flexbox Pricing Container -->
+        <div class="pricing-container">
+
+            <!-- Basic Plan -->
+            <div class="pricing-card basic">
+
+                <h2>Basic</h2>
+
+                <div class="price">
+                    ₹199 <span>/month</span>
+                </div>
+
+                <p class="description">
+                    For individuals getting started.
+                </p>
+
+                <ul class="features">
+                    <li>5 Projects</li>
+                    <li>10 GB Storage</li>
+                    <li>Email Support</li>
+                    <li>Basic Analytics</li>
+                </ul>
+
+                <a href="#" class="btn">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <!-- Pro Plan -->
+            <div class="pricing-card pro">
+
+                <span class="popular">MOST POPULAR</span>
+
+                <h2>Pro</h2>
+
+                <div class="price">
+                    ₹499 <span>/month</span>
+                </div>
+
+                <p class="description">
+                    For professionals and teams.
+                </p>
+
+                <ul class="features">
+                    <li>20 Projects</li>
+                    <li>50 GB Storage</li>
+                    <li>Priority Support</li>
+                    <li>Advanced Analytics</li>
+                </ul>
+
+                <a href="#" class="btn">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <!-- Premium Plan -->
+            <div class="pricing-card premium">
+
+                <h2>Premium</h2>
+
+                <div class="price">
+                    ₹999 <span>/month</span>
+                </div>
+
+                <p class="description">
+                    For businesses and large teams.
+                </p>
+
+                <ul class="features">
+                    <li>Unlimited Projects</li>
+                    <li>200 GB Storage</li>
+                    <li>24/7 Support</li>
+                    <li>Advanced Reports</li>
+                </ul>
+
+                <a href="#" class="btn">
+                    Choose Plan
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>s

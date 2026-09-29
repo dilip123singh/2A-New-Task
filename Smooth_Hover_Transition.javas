@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smooth Hover Transitions</title>
+
+    <style>
+
+        /* ==============================
+           ROOT COLOR VARIABLES
+        ============================== */
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --background-color: #f1f5f9;
+            --card-color: #ffffff;
+            --text-color: #172033;
+            --secondary-text: #475569;
+            --border-color: #d1d5db;
+        }
+
+
+        /* ==============================
+           RESET
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+        }
+
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+
+            /* Smooth transition */
+            transition: color 0.3s ease;
+        }
+
+
+        nav a:hover {
+            color: #dbeafe;
+        }
+
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+
+        .hero h1 {
+            font-size: 45px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+
+        .hero p {
+            color: var(--secondary-text);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+
+        /* ==============================
+           BUTTON
+        ============================== */
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+
+            /* Smooth transition */
+            transition:
+                background-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        /* Button Hover */
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+
+            /* Button moves slightly upward */
+            transform: translateY(-4px);
+
+            /* Shadow appears smoothly */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+        }
+
+
+        /* ==============================
+           CARDS SECTION
+        ============================== */
+
+        .cards-section {
+            padding: 70px 0;
+        }
+
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+        }
+
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+
+        /* ==============================
+           CARD
+        ============================== */
+
+        .card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+
+            /* Initial shadow */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+
+            /* Smooth transition */
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        /* Card Hover */
+
+        .card:hover {
+
+            /* Card moves upward */
+            transform: translateY(-8px);
+
+            /* Shadow becomes stronger */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+
+            /* Border changes */
+            border-color: var(--primary-color);
+        }
+
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+            color: var(--secondary-text);
+            line-height: 1.6;
+        }
+
+
+        /* ==============================
+           CARD BUTTON
+        ============================== */
+
+        .card-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 18px;
+
+            background-color: var(--primary-color);
+            color: white;
+
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition:
+                background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .card-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 768px) {
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         HEADER
+    ============================== -->
+
+    <header>
+
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                Hover Effects
+            </a>
+
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#cards">Cards</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="container">
+
+                <h1>
+                    Smooth Hover Transitions
+                </h1>
+
+                <p>
+                    Move your mouse over the button and cards
+                    to see smooth CSS hover effects.
+                </p>
+
+                <a href="#cards" class="btn">
+                    Explore Cards
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CARDS
+        ============================== -->
+
+        <section id="cards" class="cards-section">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    Our Services
+                </h2>
+
+
+                <div class="card-grid">
+
+
+                    <!-- Card 1 -->
+
+                    <article class="card">
+
+                        <div class="card-icon">
+                            💻
+                        </div>
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <p>
+                            Create responsive and modern
+                            websites using HTML and CSS.
+                        </p>
+
+                        <a href="#" class="card-btn">
+                            Learn More
+                        </a>
+
+                    </article>
+
+
+                    <!-- Card 2 -->
+
+                    <article class="card">
+
+                        <div class="card-icon">
+                            🎨
+                        </div>
+
+                        <h3>
+                            UI Design
+                        </h3>
+
+                        <p>
+                            Design attractive interfaces with
+                            smooth animations and transitions.
+                        </p>
+
+                        <a href="#" class="card-btn">
+                            Learn More
+                        </a>
+
+                    </article>
+
+
+                    <!-- Card 3 -->
+
+                    <article class="card">
+
+                        <div class="card-icon">
+                            🚀
+                        </div>
+
+                        <h3>
+                            Performance
+                        </h3>
+
+                        <p>
+                            Build fast, responsive and
+                            user-friendly web experiences.
+                        </p>
+
+                        <a href="#" class="card-btn">
+                            Learn More
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Smooth Hover Transitions
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

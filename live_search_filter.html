@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search Filter</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+        }
+
+        .student-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .student {
+            padding: 15px;
+            background: #f5f6fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .student h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .student p {
+            color: #666;
+        }
+
+        #noResult {
+            text-align: center;
+            color: #e74c3c;
+            font-weight: bold;
+            display: none;
+            padding: 20px;
+        }
+
+        .count {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Search</h1>
+
+        <input
+            type="text"
+            id="searchInput"
+            class="search-box"
+            placeholder="Search student by name or course..."
+        >
+
+        <div class="count">
+            Showing <span id="resultCount">6</span> students
+        </div>
+
+        <div class="student-list" id="studentList">
+
+            <div class="student">
+                <h3>Rahul Sharma</h3>
+                <p>Java Developer</p>
+            </div>
+
+            <div class="student">
+                <h3>Priya Singh</h3>
+                <p>Web Development</p>
+            </div>
+
+            <div class="student">
+                <h3>Amit Kumar</h3>
+                <p>Python Developer</p>
+            </div>
+
+            <div class="student">
+                <h3>Neha Verma</h3>
+                <p>JavaScript Developer</p>
+            </div>
+
+            <div class="student">
+                <h3>Rohit Das</h3>
+                <p>Data Science</p>
+            </div>
+
+            <div class="student">
+                <h3>Anjali Roy</h3>
+                <p>Java Developer</p>
+            </div>
+
+        </div>
+
+        <div id="noResult">
+            No student found!
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const searchInput = document.getElementById("searchInput");
+        const students = document.querySelectorAll(".student");
+        const resultCount = document.getElementById("resultCount");
+        const noResult = document.getElementById("noResult");
+
+        searchInput.addEventListener("input", function () {
+
+            const searchValue = searchInput.value.toLowerCase().trim();
+
+            let visibleCount = 0;
+
+            students.forEach(function (student) {
+
+                const studentText = student.textContent.toLowerCase();
+
+                if (studentText.includes(searchValue)) {
+
+                    student.style.display = "block";
+                    visibleCount++;
+
+                } else {
+
+                    student.style.display = "none";
+
+                }
+
+            });
+
+            resultCount.textContent = visibleCount;
+
+            if (visibleCount === 0) {
+
+                noResult.style.display = "block";
+
+            } else {
+
+                noResult.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

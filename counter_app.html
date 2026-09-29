@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Counter App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f1f3f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .counter-box {
+            width: 350px;
+            padding: 35px 25px;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #212529;
+        }
+
+        #count {
+            display: block;
+            margin-bottom: 25px;
+            font-size: 60px;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            min-width: 90px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .increment {
+            background: #198754;
+        }
+
+        .increment:hover {
+            background: #157347;
+        }
+
+        .decrement {
+            background: #dc3545;
+        }
+
+        .decrement:hover {
+            background: #bb2d3b;
+        }
+
+        .reset {
+            background: #6c757d;
+        }
+
+        .reset:hover {
+            background: #565e64;
+        }
+
+        @media (max-width: 400px) {
+            .counter-box {
+                width: 90%;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="counter-box">
+
+        <h1>Counter App</h1>
+
+        <span id="count">0</span>
+
+        <div class="buttons">
+
+            <button class="decrement" onclick="decrement()">
+                − Decrement
+            </button>
+
+            <button class="reset" onclick="resetCounter()">
+                Reset
+            </button>
+
+            <button class="increment" onclick="increment()">
+                + Increment
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Initial counter value
+        let count = 0;
+
+        // Display element
+        const countDisplay = document.getElementById("count");
+
+
+        // Increment counter
+        function increment() {
+
+            count++;
+
+            countDisplay.textContent = count;
+        }
+
+
+        // Decrement counter
+        function decrement() {
+
+            count--;
+
+            countDisplay.textContent = count;
+        }
+
+
+        // Reset counter
+        function resetCounter() {
+
+            count = 0;
+
+            countDisplay.textContent = count;
+        }
+
+    </script>
+
+</body>
+</html>

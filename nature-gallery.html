@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nature Photo Gallery</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f2;
+            color: #333;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #2f5d50;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           GALLERY CARD
+        ========================= */
+
+        .gallery-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.12);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           CAPTION
+        ========================= */
+
+        .caption {
+            padding: 18px;
+        }
+
+        .caption h2 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .caption p {
+            font-size: 14px;
+            color: #666;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            background-color: #2f5d50;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .gallery {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+
+            .gallery-item img {
+                height: 230px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>Nature Photo Gallery</h1>
+
+        <p>
+            Explore the beauty of mountains,
+            forests, rivers and waterfalls.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         IMAGE GALLERY
+    ========================= -->
+
+    <main>
+
+        <section class="gallery"
+                 aria-label="Nature photo gallery">
+
+
+            <!-- IMAGE 1 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+                    alt="Snow-covered mountain peaks surrounded by green hills under a clear blue sky">
+
+                <div class="caption">
+
+                    <h2>Mountain Landscape</h2>
+
+                    <p>
+                        Snow-covered mountains surrounded
+                        by green hills.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- IMAGE 2 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+                    alt="Tall green trees forming a dense forest with sunlight passing through the leaves">
+
+                <div class="caption">
+
+                    <h2>Green Forest</h2>
+
+                    <p>
+                        Sunlight filtering through
+                        a dense green forest.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- IMAGE 3 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1433086966358-54859d0ed716"
+                    alt="Waterfall flowing over rocks into a calm pool surrounded by green vegetation">
+
+                <div class="caption">
+
+                    <h2>Waterfall</h2>
+
+                    <p>
+                        A peaceful waterfall flowing
+                        through a green landscape.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- IMAGE 4 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1439853949127-fa647821eba0"
+                    alt="Calm lake reflecting snow-covered mountains and cloudy sky">
+
+                <div class="caption">
+
+                    <h2>Mountain Lake</h2>
+
+                    <p>
+                        A calm lake reflecting
+                        the surrounding mountains.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- IMAGE 5 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+                    alt="Green grassy field extending toward distant mountains beneath a bright sky">
+
+                <div class="caption">
+
+                    <h2>Green Valley</h2>
+
+                    <p>
+                        A wide green valley with
+                        mountains in the distance.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- IMAGE 6 -->
+
+            <article class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+                    alt="Rocky coastline with ocean waves and cliffs beneath a cloudy sky">
+
+                <div class="caption">
+
+                    <h2>Ocean Coast</h2>
+
+                    <p>
+                        Ocean waves meeting a rocky
+                        natural coastline.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Nature Gallery
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

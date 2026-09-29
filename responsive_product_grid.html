@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Product Grid</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 50px 0 35px;
+        }
+
+        .page-title h1 {
+            font-weight: bold;
+        }
+
+        .product-card {
+            height: 100%;
+            background-color: white;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 22px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .price {
+            color: #0d6efd;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .rating {
+            color: #f5a623;
+        }
+
+        .buy-btn {
+            width: 100%;
+        }
+
+        /* Extra Small / Mobile
+           col-12 = 1 card per row */
+
+        /* Small devices
+           col-sm-6 = 2 cards per row */
+
+        /* Large devices
+           col-lg-4 = 3 cards per row */
+
+        /* Extra Large devices
+           col-xl-3 = 4 cards per row */
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="page-title">
+
+        <h1>Our Products</h1>
+
+        <p class="text-muted">
+            Responsive Product Card Grid
+        </p>
+
+    </header>
+
+
+    <!-- Product Grid -->
+    <main class="container pb-5">
+
+        <div class="row g-4">
+
+
+            <!-- Product 1 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Red running shoes"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Running Shoes
+                        </h2>
+
+                        <p class="product-description">
+                            Comfortable running shoes suitable
+                            for everyday workouts and sports.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★★
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹1,999
+                            </span>
+
+                            <span class="old-price">
+                                ₹2,499
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Smart watch"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Smart Watch
+                        </h2>
+
+                        <p class="product-description">
+                            Stylish smartwatch with fitness tracking
+                            and notification features.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹2,499
+                            </span>
+
+                            <span class="old-price">
+                                ₹3,299
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Wireless headphones"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Headphones
+                        </h2>
+
+                        <p class="product-description">
+                            Wireless headphones with comfortable
+                            design and clear audio quality.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★★
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹1,499
+                            </span>
+
+                            <span class="old-price">
+                                ₹1,999
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Smartphone"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Smartphone
+                        </h2>
+
+                        <p class="product-description">
+                            Modern smartphone with powerful
+                            performance and high-quality camera.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹14,999
+                            </span>
+
+                            <span class="old-price">
+                                ₹17,999
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 5 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Fitness smartwatch"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Fitness Watch
+                        </h2>
+
+                        <p class="product-description">
+                            Track your daily activity, steps,
+                            heart rate and workouts.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★★
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹2,799
+                            </span>
+
+                            <span class="old-price">
+                                ₹3,499
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 6 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Coffee cup"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Coffee Maker
+                        </h2>
+
+                        <p class="product-description">
+                            Easy-to-use coffee maker designed
+                            for fresh coffee every morning.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹3,499
+                            </span>
+
+                            <span class="old-price">
+                                ₹4,299
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 7 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="Perfume bottle"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Premium Perfume
+                        </h2>
+
+                        <p class="product-description">
+                            Long-lasting fragrance with a modern
+                            and elegant scent.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★★
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹1,299
+                            </span>
+
+                            <span class="old-price">
+                                ₹1,699
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 8 -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                <div class="card product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                        alt="White t-shirt"
+                    >
+
+                    <div class="card-body">
+
+                        <h2 class="product-title">
+                            Classic T-Shirt
+                        </h2>
+
+                        <p class="product-description">
+                            Comfortable cotton T-shirt with a
+                            simple and stylish design.
+                        </p>
+
+                        <div class="rating mb-2">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mb-3">
+
+                            <span class="price">
+                                ₹699
+                            </span>
+
+                            <span class="old-price">
+                                ₹999
+                            </span>
+
+                        </div>
+
+                        <button class="btn btn-primary buy-btn">
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>

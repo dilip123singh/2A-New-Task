@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accessible Dropdown Menu</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 50px;
+        }
+
+        /* Navigation */
+
+        nav {
+            background: #1f2937;
+            padding: 15px 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a,
+        summary {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav a:hover,
+        summary:hover {
+            color: #60a5fa;
+        }
+
+
+        /* Dropdown */
+
+        details {
+            position: relative;
+        }
+
+        summary {
+            list-style: none;
+        }
+
+        /* Remove default arrow */
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: " ▼";
+            font-size: 11px;
+        }
+
+
+        /* Dropdown Menu */
+
+        .dropdown {
+            position: absolute;
+            top: 30px;
+            left: 0;
+
+            width: 180px;
+
+            background: white;
+
+            border-radius: 6px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+            padding: 8px 0;
+        }
+
+        .dropdown li {
+            width: 100%;
+        }
+
+        .dropdown a {
+            display: block;
+
+            padding: 10px 15px;
+
+            color: #333;
+        }
+
+        .dropdown a:hover {
+            background: #f1f5f9;
+            color: #2563eb;
+        }
+
+
+        /* Keyboard Focus */
+
+        nav a:focus,
+        summary:focus {
+            outline: 3px solid #60a5fa;
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        .dropdown a:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: -3px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav aria-label="Main Navigation">
+
+        <ul>
+
+            <li>
+                <a href="#">Home</a>
+            </li>
+
+
+            <li>
+                <a href="#">About</a>
+            </li>
+
+
+            <!-- Accessible Dropdown -->
+
+            <li>
+
+                <details>
+
+                    <summary>
+                        Courses
+                    </summary>
+
+                    <ul class="dropdown">
+
+                        <li>
+                            <a href="#">Java</a>
+                        </li>
+
+                        <li>
+                            <a href="#">HTML</a>
+                        </li>
+
+                        <li>
+                            <a href="#">CSS</a>
+                        </li>
+
+                        <li>
+                            <a href="#">JavaScript</a>
+                        </li>
+
+                    </ul>
+
+                </details>
+
+            </li>
+
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+</body>
+
+</html>

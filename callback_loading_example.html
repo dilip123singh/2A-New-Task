@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Callback Async Loading</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f1f3f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 380px;
+            padding: 30px;
+            background: white;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            color: #212529;
+        }
+
+        #message {
+            min-height: 30px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .loader {
+            width: 45px;
+            height: 45px;
+            margin: 20px auto;
+            border: 5px solid #ddd;
+            border-top: 5px solid #0d6efd;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 7px;
+            background: #0d6efd;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0b5ed7;
+        }
+
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Async Loading</h1>
+
+        <p id="message">Click the button to start.</p>
+
+        <div id="loader" class="loader"></div>
+
+        <button id="startButton" onclick="startProcess()">
+            Start Process
+        </button>
+
+    </div>
+
+
+    <script>
+
+        // Callback-based asynchronous function
+        function loadData(callback) {
+
+            console.log("Loading started...");
+
+            // Simulating an asynchronous operation
+            setTimeout(function () {
+
+                console.log("Loading completed.");
+
+                // Calling the callback after loading
+                callback("Data loaded successfully!");
+
+            }, 3000);
+        }
+
+
+        // Start button function
+        function startProcess() {
+
+            const button = document.getElementById("startButton");
+            const loader = document.getElementById("loader");
+            const message = document.getElementById("message");
+
+            // Show loading
+            loader.style.display = "block";
+            message.textContent = "Loading data...";
+
+            // Disable button while loading
+            button.disabled = true;
+
+            // Call asynchronous function
+            loadData(function (result) {
+
+                // This callback executes after 3 seconds
+                loader.style.display = "none";
+
+                message.textContent = result;
+
+                button.disabled = false;
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>

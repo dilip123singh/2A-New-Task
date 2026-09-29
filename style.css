@@ -1,0 +1,136 @@
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    padding: 40px 20px;
+}
+
+/* Dashboard */
+.dashboard {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Table Container */
+.table-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+/* Caption */
+caption {
+    caption-side: top;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Table Header */
+thead {
+    background-color: #2c3e50;
+    color: white;
+}
+
+th,
+td {
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Student Name Alignment */
+tbody td:nth-child(2) {
+    text-align: left;
+    font-weight: 500;
+}
+
+/* Alternating Rows */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background-color: #e8f0fe;
+    transition: 0.2s;
+}
+
+/* Total Column */
+tbody td:nth-child(6) {
+    font-weight: bold;
+}
+
+/* Grade */
+tbody td:last-child {
+    font-weight: bold;
+}
+
+/* Footer */
+tfoot {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+tfoot th,
+tfoot td {
+    border-top: 3px solid #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .table-container {
+        padding: 15px;
+    }
+
+    caption {
+        font-size: 18px;
+    }
+}
+

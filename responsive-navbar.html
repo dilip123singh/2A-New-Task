@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Navigation Bar</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background-color: #222;
+            color: white;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           NAV LINKS
+        ========================= */
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 5px;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        .nav-links a:focus {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            min-height: 400px;
+            padding: 80px 25px;
+            background-color: white;
+            margin-bottom: 2px;
+        }
+
+        section h1,
+        section h2 {
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            nav {
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                background-color: #333;
+                border-radius: 4px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER LANDMARK
+    ========================= -->
+
+    <header>
+
+        <!-- Navigation Landmark -->
+
+        <nav aria-label="Main navigation">
+
+            <!-- Website Logo -->
+
+            <a href="#home" class="logo">
+                MyWebsite
+            </a>
+
+
+            <!-- Navigation Links -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LANDMARK
+    ========================= -->
+
+    <main id="home">
+
+
+        <!-- HERO SECTION -->
+
+        <section class="hero">
+
+            <h1>Welcome to My Website</h1>
+
+            <p>
+                A responsive navigation bar with
+                accessible landmark roles.
+            </p>
+
+        </section>
+
+
+        <!-- ABOUT SECTION -->
+
+        <section id="about">
+
+            <h2>About</h2>
+
+            <p>
+                This is the About section of the website.
+                Semantic HTML makes the structure easier
+                to understand for users and assistive
+                technologies.
+            </p>
+
+        </section>
+
+
+        <!-- SERVICES SECTION -->
+
+        <section id="services">
+
+            <h2>Services</h2>
+
+            <p>
+                We provide web development and responsive
+                website design services.
+            </p>
+
+        </section>
+
+
+        <!-- PROJECTS SECTION -->
+
+        <section id="projects">
+
+            <h2>Projects</h2>
+
+            <p>
+                Here you can display your latest projects
+                and development work.
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <p>
+                Email: example@gmail.com
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER LANDMARK
+    ========================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 MyWebsite. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Color Theme System</title>
+
+    <style>
+
+        /* =========================================
+           COLOR THEME SYSTEM
+        ========================================= */
+
+        :root {
+
+            /* Primary Colors */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+
+            /* Secondary Colors */
+            --secondary-color: #7c3aed;
+            --secondary-light: #ede9fe;
+
+            /* Background Colors */
+            --background-color: #f8fafc;
+            --surface-color: #ffffff;
+
+            /* Text Colors */
+            --text-primary: #172033;
+            --text-secondary: #475569;
+            --text-light: #ffffff;
+
+            /* Border */
+            --border-color: #cbd5e1;
+
+            /* Status Colors */
+            --success-color: #15803d;
+            --warning-color: #b45309;
+            --danger-color: #dc2626;
+
+            /* Shadow */
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+
+            /* Border Radius */
+            --radius: 8px;
+
+            /* Spacing */
+            --section-padding: 70px;
+
+        }
+
+
+        /* =========================================
+           BASIC RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+        }
+
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        nav a:hover {
+            color: var(--primary-light);
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            background-color: var(--primary-light);
+            padding: var(--section-padding) 0;
+        }
+
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+
+        .hero-text {
+            flex: 1;
+        }
+
+
+        .hero-text h1 {
+            color: var(--primary-dark);
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+
+        .hero-text p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+
+        /* =========================================
+           CARDS
+        ========================================= */
+
+        .cards {
+            padding: var(--section-padding) 0;
+        }
+
+
+        .section-title {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 35px;
+            font-size: 35px;
+        }
+
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+
+        /* =========================================
+           THEME COLOR SHOWCASE
+        ========================================= */
+
+        .theme-section {
+            padding: var(--section-padding) 0;
+            background-color: var(--surface-color);
+        }
+
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+
+        .color-box {
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+
+        .primary {
+            background-color: var(--primary-color);
+        }
+
+
+        .secondary {
+            background-color: var(--secondary-color);
+        }
+
+
+        .success {
+            background-color: var(--success-color);
+        }
+
+
+        .danger {
+            background-color: var(--danger-color);
+        }
+
+
+        /* =========================================
+           ALERTS
+        ========================================= */
+
+        .alerts {
+            padding: var(--section-padding) 0;
+        }
+
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: var(--radius);
+            font-weight: bold;
+        }
+
+
+        .success-alert {
+            background-color: #dcfce7;
+            color: var(--success-color);
+        }
+
+
+        .warning-alert {
+            background-color: #fef3c7;
+            color: var(--warning-color);
+        }
+
+
+        .danger-alert {
+            background-color: #fee2e2;
+            color: var(--danger-color);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background-color: var(--text-primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 25px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+
+            .hero-text h1 {
+                font-size: 35px;
+            }
+
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .color-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                Theme System
+            </a>
+
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#cards">Cards</a>
+                    </li>
+
+                    <li>
+                        <a href="#colors">Colors</a>
+                    </li>
+
+                    <li>
+                        <a href="#alerts">Alerts</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <h1>
+                        Website Color Theme System
+                    </h1>
+
+                    <p>
+                        This website uses CSS custom properties
+                        defined inside :root to maintain a
+                        consistent color theme.
+                    </p>
+
+                    <a href="#colors" class="btn">
+                        View Theme Colors
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARDS -->
+
+        <section id="cards" class="cards">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    Theme Components
+                </h2>
+
+
+                <div class="card-grid">
+
+                    <article class="card">
+
+                        <h3>
+                            Primary Color
+                        </h3>
+
+                        <p>
+                            Used for buttons, navigation,
+                            headings and important elements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <h3>
+                            Secondary Color
+                        </h3>
+
+                        <p>
+                            Used for supporting elements
+                            and visual highlights.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <h3>
+                            Text Colors
+                        </h3>
+
+                        <p>
+                            Separate variables are used
+                            for primary and secondary text.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLOR SHOWCASE -->
+
+        <section id="colors" class="theme-section">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    Theme Colors
+                </h2>
+
+
+                <div class="color-grid">
+
+                    <div class="color-box primary">
+                        Primary
+                    </div>
+
+                    <div class="color-box secondary">
+                        Secondary
+                    </div>
+
+                    <div class="color-box success">
+                        Success
+                    </div>
+
+                    <div class="color-box danger">
+                        Danger
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALERTS -->
+
+        <section id="alerts" class="alerts">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    Status Messages
+                </h2>
+
+
+                <div class="alert success-alert">
+                    ✓ Success: Your operation was completed.
+                </div>
+
+
+                <div class="alert warning-alert">
+                    ⚠ Warning: Please check your information.
+                </div>
+
+
+                <div class="alert danger-alert">
+                    ✕ Error: Something went wrong.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Color Theme System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

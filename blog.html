@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Blog</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #ccc;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+
+        /* =========================
+           MAIN LAYOUT
+        ========================= */
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+
+        /* =========================
+           BLOG SECTION
+        ========================= */
+
+        .blog-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .blog-section > h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+
+        /* =========================
+           ARTICLE
+        ========================= */
+
+        article {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        article h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        article h3 a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        article h3 a:hover {
+            color: #666;
+        }
+
+        .date {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        article p {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .read-more {
+            color: #222;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        aside {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        aside h2 {
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+        }
+
+        aside ul {
+            list-style: none;
+        }
+
+        aside li {
+            margin-bottom: 10px;
+        }
+
+        aside a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        aside a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .about-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .about-section h3 {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            color: #ccc;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
+
+            .blog-section,
+            aside {
+                padding: 20px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            header {
+                padding: 25px 15px;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            main {
+                margin: 15px auto;
+                padding: 0 10px;
+            }
+
+            article h3 {
+                font-size: 20px;
+            }
+
+            .blog-section > h2 {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>My Tech Blog</h1>
+
+        <p>
+            Learn Web Development, JavaScript and Programming
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="#">Home</a>
+        <a href="#">Web Development</a>
+        <a href="#">JavaScript</a>
+        <a href="#">Java</a>
+        <a href="#">Contact</a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+
+
+        <!-- =========================
+             BLOG SECTION
+        ========================= -->
+
+        <section class="blog-section">
+
+            <h2>Latest Articles</h2>
+
+
+            <!-- ARTICLE 1 -->
+
+            <article>
+
+                <h3>
+                    <a href="#">
+                        Introduction to HTML
+                    </a>
+                </h3>
+
+                <div class="date">
+                    Published: September 6, 2026
+                </div>
+
+                <p>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure of a
+                    webpage using elements and tags.
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More →
+                </a>
+
+            </article>
+
+
+            <!-- ARTICLE 2 -->
+
+            <article>
+
+                <h3>
+                    <a href="#">
+                        Understanding CSS Flexbox
+                    </a>
+                </h3>
+
+                <div class="date">
+                    Published: September 4, 2026
+                </div>
+
+                <p>
+                    CSS Flexbox is a one-dimensional layout
+                    system that makes it easier to align and
+                    distribute elements inside a container.
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More →
+                </a>
+
+            </article>
+
+
+            <!-- ARTICLE 3 -->
+
+            <article>
+
+                <h3>
+                    <a href="#">
+                        JavaScript Basics
+                    </a>
+                </h3>
+
+                <div class="date">
+                    Published: September 2, 2026
+                </div>
+
+                <p>
+                    JavaScript is a programming language used
+                    to add interactivity and dynamic behavior
+                    to web pages.
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More →
+                </a>
+
+            </article>
+
+
+            <!-- ARTICLE 4 -->
+
+            <article>
+
+                <h3>
+                    <a href="#">
+                        What is Responsive Web Design?
+                    </a>
+                </h3>
+
+                <div class="date">
+                    Published: August 30, 2026
+                </div>
+
+                <p>
+                    Responsive web design allows a website to
+                    automatically adjust its layout according
+                    to the screen size of the device.
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More →
+                </a>
+
+            </article>
+
+
+            <!-- NESTED SECTION -->
+
+            <section class="about-section">
+
+                <h3>About This Blog</h3>
+
+                <p>
+                    This blog shares beginner-friendly tutorials
+                    and practical knowledge about web development
+                    and programming.
+                </p>
+
+            </section>
+
+        </section>
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================= -->
+
+        <aside>
+
+            <h2>Categories</h2>
+
+            <ul>
+
+                <li>
+                    <a href="#">HTML</a>
+                </li>
+
+                <li>
+                    <a href="#">CSS</a>
+                </li>
+
+                <li>
+                    <a href="#">JavaScript</a>
+                </li>
+
+                <li>
+                    <a href="#">Java</a>
+                </li>
+
+                <li>
+                    <a href="#">MySQL</a>
+                </li>
+
+            </ul>
+
+
+            <section class="about-section">
+
+                <h3>Popular Topics</h3>
+
+                <p>
+                    HTML, CSS, JavaScript, Java,
+                    Git, GitHub and Web Development.
+                </p>
+
+            </section>
+
+        </aside>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 My Tech Blog. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+

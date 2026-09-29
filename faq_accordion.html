@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ Accordion</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+
+            min-height: 100vh;
+
+            padding: 60px 20px;
+        }
+
+        /* Main FAQ Container */
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .faq-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* FAQ Item */
+        details {
+            background: white;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #ddd;
+            border-radius: 10px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+            overflow: hidden;
+
+            transition:
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        details:hover {
+            border-color: #0d6efd;
+        }
+
+        details[open] {
+            border-color: #0d6efd;
+
+            box-shadow:
+                0 8px 20px rgba(13, 110, 253, 0.12);
+        }
+
+        /* Question */
+        summary {
+            position: relative;
+
+            cursor: pointer;
+
+            padding: 20px 55px 20px 20px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            list-style: none;
+
+            color: #1e293b;
+        }
+
+        /* Remove Default Marker */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Plus Icon */
+        summary::after {
+            content: "+";
+
+            position: absolute;
+
+            right: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 25px;
+            font-weight: normal;
+
+            color: #0d6efd;
+
+            transition: transform 0.3s ease;
+        }
+
+        /* Change + to × when open */
+        details[open] summary::after {
+            content: "×";
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        /* Answer */
+        .answer {
+            padding: 0 20px 20px;
+
+            color: #666;
+
+            line-height: 1.7;
+
+            border-top: 1px solid #eee;
+        }
+
+        .answer p {
+            padding-top: 15px;
+        }
+
+        /* Focus Accessibility */
+        summary:focus-visible {
+            outline: 3px solid rgba(13, 110, 253, 0.35);
+            outline-offset: -3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+
+            body {
+                padding: 40px 15px;
+            }
+
+            .faq-header h1 {
+                font-size: 30px;
+            }
+
+            summary {
+                font-size: 16px;
+                padding: 18px 50px 18px 16px;
+            }
+
+            .answer {
+                padding: 0 16px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="faq-container">
+
+        <!-- Header -->
+        <div class="faq-header">
+
+            <h1>Frequently Asked Questions</h1>
+
+            <p>
+                Find answers to common questions below.
+            </p>
+
+        </div>
+
+
+        <!-- FAQ 1 -->
+        <details>
+
+            <summary>
+                What is HTML?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    HTML stands for HyperText Markup Language.
+                    It is used to create the structure of web pages.
+                </p>
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 2 -->
+        <details>
+
+            <summary>
+                What is CSS?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    CSS stands for Cascading Style Sheets.
+                    It is used to style and design HTML elements.
+                </p>
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 3 -->
+        <details>
+
+            <summary>
+                What is JavaScript?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    JavaScript is a programming language mainly used
+                    to add interactivity and dynamic behavior to web pages.
+                </p>
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 4 -->
+        <details>
+
+            <summary>
+                Can an FAQ accordion work without JavaScript?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    Yes. The HTML details and summary elements provide
+                    built-in expand and collapse functionality without
+                    requiring JavaScript.
+                </p>
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 5 -->
+        <details>
+
+            <summary>
+                What is responsive web design?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    Responsive web design makes a website adapt properly
+                    to different screen sizes such as mobile, tablet,
+                    and desktop.
+                </p>
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 6 -->
+        <details>
+
+            <summary>
+                What is CSS Flexbox?
+            </summary>
+
+            <div class="answer">
+                <p>
+                    Flexbox is a CSS layout system used to arrange elements
+                    efficiently in rows or columns and control their alignment,
+                    spacing, and size.
+                </p>
+            </div>
+
+        </details>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Number Sorting UI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 100%;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #numberInput {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 2px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        #numberInput:focus {
+            border-color: #4facfe;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 18px;
+        }
+
+        button {
+            flex: 1;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        #ascendingBtn {
+            background: #4facfe;
+            color: white;
+        }
+
+        #descendingBtn {
+            background: #667eea;
+            color: white;
+        }
+
+        #clearBtn {
+            background: #222;
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .result-box {
+            margin-top: 25px;
+
+            padding: 18px;
+
+            background: #f5f7fb;
+
+            border-radius: 12px;
+        }
+
+        .result-box h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .numbers {
+            min-height: 30px;
+
+            color: #555;
+
+            line-height: 1.6;
+
+            word-wrap: break-word;
+        }
+
+        .sorted {
+            color: #4facfe;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+        .message {
+            margin-top: 15px;
+
+            text-align: center;
+
+            min-height: 20px;
+
+            font-weight: bold;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .success {
+            color: #27ae60;
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 25px 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔢 Number Sorter</h1>
+
+        <p class="subtitle">
+            Enter numbers and sort them instantly
+        </p>
+
+
+        <label for="numberInput">
+            Enter Numbers
+        </label>
+
+        <input
+            type="text"
+            id="numberInput"
+            placeholder="Example: 50, 10, 80, 30, 20"
+        >
+
+
+        <div class="button-group">
+
+            <button id="ascendingBtn">
+                ↑ Ascending
+            </button>
+
+            <button id="descendingBtn">
+                ↓ Descending
+            </button>
+
+            <button id="clearBtn">
+                Clear
+            </button>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <h3>Original Numbers</h3>
+
+            <div
+                id="originalNumbers"
+                class="numbers"
+            >
+                No numbers entered
+            </div>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <h3>Sorted Result</h3>
+
+            <div
+                id="sortedNumbers"
+                class="numbers sorted"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+    </div>
+
+
+    <script>
+
+        const numberInput =
+            document.getElementById("numberInput");
+
+        const ascendingBtn =
+            document.getElementById("ascendingBtn");
+
+        const descendingBtn =
+            document.getElementById("descendingBtn");
+
+        const clearBtn =
+            document.getElementById("clearBtn");
+
+        const originalNumbers =
+            document.getElementById("originalNumbers");
+
+        const sortedNumbers =
+            document.getElementById("sortedNumbers");
+
+        const message =
+            document.getElementById("message");
+
+
+        // Get numbers from input
+        function getNumbers() {
+
+            let input = numberInput.value.trim();
+
+
+            // Empty input
+            if (input === "") {
+
+                showError("Please enter some numbers.");
+
+                return null;
+            }
+
+
+            // Convert string into array
+            let numbers = input
+                .split(",")
+                .map(function(value) {
+
+                    return Number(value.trim());
+
+                });
+
+
+            // Check invalid numbers
+            if (numbers.some(function(number) {
+
+                return Number.isNaN(number);
+
+            })) {
+
+                showError(
+                    "Please enter valid numbers separated by commas."
+                );
+
+                return null;
+            }
+
+
+            return numbers;
+        }
+
+
+        // Display original numbers
+        function showOriginal(numbers) {
+
+            originalNumbers.innerText =
+                numbers.join(", ");
+
+        }
+
+
+        // Ascending sort
+        ascendingBtn.addEventListener("click", function() {
+
+            let numbers = getNumbers();
+
+
+            if (numbers === null) {
+                return;
+            }
+
+
+            showOriginal(numbers);
+
+
+            // Create copy
+            let sorted = [...numbers];
+
+
+            sorted.sort(function(a, b) {
+
+                return a - b;
+
+            });
+
+
+            sortedNumbers.innerText =
+                sorted.join(", ");
+
+
+            showSuccess(
+                "Numbers sorted in ascending order!"
+            );
+
+        });
+
+
+        // Descending sort
+        descendingBtn.addEventListener("click", function() {
+
+            let numbers = getNumbers();
+
+
+            if (numbers === null) {
+                return;
+            }
+
+
+            showOriginal(numbers);
+
+
+            // Create copy
+            let sorted = [...numbers];
+
+
+            sorted.sort(function(a, b) {
+
+                return b - a;
+
+            });
+
+
+            sortedNumbers.innerText =
+                sorted.join(", ");
+
+
+            showSuccess(
+                "Numbers sorted in descending order!"
+            );
+
+        });
+
+
+        // Clear everything
+        clearBtn.addEventListener("click", function() {
+
+            numberInput.value = "";
+
+            originalNumbers.innerText =
+                "No numbers entered";
+
+            sortedNumbers.innerText = "—";
+
+            message.innerText = "";
+
+        });
+
+
+        // Error message
+        function showError(text) {
+
+            message.innerText = "⚠️ " + text;
+
+            message.className =
+                "message error";
+
+        }
+
+
+        // Success message
+        function showSuccess(text) {
+
+            message.innerText = "✅ " + text;
+
+            message.className =
+                "message success";
+
+        }
+
+    </script>
+
+</body>
+</html>

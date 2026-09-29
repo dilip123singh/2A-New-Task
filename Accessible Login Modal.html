@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accessible Login Modal</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Login Button */
+
+        .login-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* Modal Background */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.6);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        /* Modal Box */
+
+        .modal-content {
+            width: 100%;
+            max-width: 400px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+            position: relative;
+        }
+
+
+        /* Heading */
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+
+        /* Close Button */
+
+        .close-btn {
+            position: absolute;
+
+            top: 12px;
+            right: 15px;
+
+            background: transparent;
+            border: none;
+
+            font-size: 25px;
+            cursor: pointer;
+
+            color: #555;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+            color: #333;
+        }
+
+
+        input {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #aaa;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+        }
+
+
+        input:focus {
+            outline: 3px solid #bfdbfe;
+            border-color: #2563eb;
+        }
+
+
+        /* Login Submit Button */
+
+        .submit-btn {
+            width: 100%;
+
+            padding: 12px;
+
+            background: #2563eb;
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- Login Button -->
+
+    <button class="login-btn">
+        Login
+    </button>
+
+
+    <!-- Login Dialog -->
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="login-title"
+        aria-describedby="login-description">
+
+        <div class="modal-content">
+
+
+            <!-- Close Button -->
+
+            <button
+                class="close-btn"
+                aria-label="Close login dialog">
+
+                &times;
+
+            </button>
+
+
+            <!-- Title -->
+
+            <h2 id="login-title">
+                Login
+            </h2>
+
+
+            <!-- Description -->
+
+            <p
+                id="login-description"
+                class="description">
+
+                Enter your email and password to continue.
+
+            </p>
+
+
+            <!-- Login Form -->
+
+            <form>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
+                    Login
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

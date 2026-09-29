@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dark Mode Toggle</title>
+
+    <style>
+        /* =========================
+           LIGHT THEME VARIABLES
+        ========================== */
+        :root {
+            --bg-color: #f4f7fb;
+            --card-color: #ffffff;
+            --text-color: #222222;
+            --secondary-text: #666666;
+            --border-color: #dddddd;
+            --primary-color: #0d6efd;
+            --button-text: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           DARK THEME VARIABLES
+        ========================== */
+        body:has(#theme-toggle:checked) {
+            --bg-color: #121212;
+            --card-color: #1e1e1e;
+            --text-color: #ffffff;
+            --secondary-text: #bbbbbb;
+            --border-color: #333333;
+            --primary-color: #66aaff;
+            --button-text: #111111;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* =========================
+           GLOBAL
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background-color: var(--bg-color);
+            color: var(--text-color);
+
+            min-height: 100vh;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+        .navbar {
+            height: 70px;
+
+            padding: 0 8%;
+
+            background-color: var(--card-color);
+
+            border-bottom: 1px solid var(--border-color);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                background-color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+
+            color: var(--primary-color);
+        }
+
+
+        /* =========================
+           TOGGLE
+        ========================== */
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            cursor: pointer;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .toggle {
+            width: 55px;
+            height: 28px;
+
+            background-color: #777;
+
+            border-radius: 30px;
+
+            position: relative;
+
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle::before {
+            content: "";
+
+            position: absolute;
+
+            width: 22px;
+            height: 22px;
+
+            top: 3px;
+            left: 4px;
+
+            background-color: white;
+
+            border-radius: 50%;
+
+            transition: transform 0.3s ease;
+        }
+
+
+        /* Checked Toggle */
+        #theme-toggle:checked + .toggle {
+            background-color: var(--primary-color);
+        }
+
+        #theme-toggle:checked + .toggle::before {
+            transform: translateX(25px);
+        }
+
+
+        /* =========================
+           MAIN
+        ========================== */
+        .container {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 70px 20px;
+        }
+
+        .hero {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: var(--secondary-text);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-color);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--secondary-text);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+        .btn {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 12px 25px;
+
+            background-color: var(--primary-color);
+
+            color: var(--button-text);
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+        @media (max-width: 750px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            MyWebsite
+        </div>
+
+        <label class="theme-switch">
+
+            <span>🌙</span>
+
+            <input type="checkbox" id="theme-toggle">
+
+            <span class="toggle"></span>
+
+            <span>Dark</span>
+
+        </label>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <section class="hero">
+
+            <h1>
+                Dark Mode UI
+            </h1>
+
+            <p>
+                Toggle the switch above to change between
+                light mode and dark mode using CSS variables.
+            </p>
+
+            <a href="#" class="btn">
+                Explore More
+            </a>
+
+        </section>
+
+
+        <!-- Cards -->
+        <section class="cards">
+
+            <div class="card">
+
+                <h2>CSS Variables</h2>
+
+                <p>
+                    CSS custom properties allow us to define
+                    reusable colors, spacing, shadows and other
+                    design values.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Light Mode</h2>
+
+                <p>
+                    The default theme uses a light background,
+                    dark text and white content cards.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Dark Mode</h2>
+
+                <p>
+                    When the toggle is activated, CSS variables
+                    automatically change the colors of the page.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
